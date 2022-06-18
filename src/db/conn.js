@@ -1,7 +1,17 @@
 const mongoose = require("mongoose");
+const colors = require("colors");
 
-mongoose.connect("mongodb://localhost:27017/students-api", {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-  useCreateIndex: true,
-});
+const connectDB = async () => {
+  try {
+    const conn = await mongoose.connect(`mongodb+srv://Niku8800:1234@cluster0.aaden.mongodb.net/?retryWrites=true&w=majority`, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
+    console.log(`MongoDB Connected...  ${conn.connection.host}  `);
+  } catch (err) {
+    console.error(`Error: ${err.message}`.red.bold);
+    process.exit(); // process.exit() is used to terminate the process
+  }
+};
+
+module.exports = connectDB;
