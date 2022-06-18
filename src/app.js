@@ -1,15 +1,13 @@
 const express = require("express");
 const app = express();
 const connectDB = require("./db/conn");
-const users = require("./models/students");
+
+const router = require("./routers/students");
 
 connectDB();
 
-const studentRouter = require("./routers/students");
-
 app.use(express.json());
-
-app.use(studentRouter);
+app.use(router);
 
 const port = process.env.PORT || 8000;
 

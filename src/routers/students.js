@@ -1,3 +1,4 @@
+const users = require("../models/students");
 const express = require("express");
 const router = new express.Router();
 
